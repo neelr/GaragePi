@@ -1,0 +1,22 @@
+{
+  "name": "garagepi",
+  "version": "1.0.0",
+  "description": "A quick repo of code (might make a vid) of my code for automating my garage door",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hacker719/GaragePi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hacker719/GaragePi/issues"
+  },
+  "homepage": "https://github.com/Hacker719/GaragePi#readme",
+  "dependencies": {
+    "onoff": "^4.1.3"
+  }
+}

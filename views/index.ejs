@@ -9,13 +9,27 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="apple-touch-icon" href="/icon.png">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="robots" content="noindex,nofollow">
     <title>GaragePi</title>
 </head>
 
 <body>
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red">
+            <i class="large material-icons">face</i>
+        </a>
+        <ul>
+            <li><a class="btn-floating red" href="mailto:neel.redkar@outlook.com"><i class="material-icons">mail</i></a></li>
+            <li><a class="btn-floating black" href="https://github.com/hacker719"><i class="fab fa-github"></i></a></li>
+            <li><a class="btn-floating blue" href="https://neelredkar.tech"><i class="material-icons">insert_link</i></a></li>
+        </ul>
+    </div>
+
     <div class="container" style="  display: flex;
     width: 100vw;
     height: 100vh;
@@ -41,6 +55,9 @@
                 <div class="col l6 s12">
                     <h5 class="white-text">GaragePi</h5>
                     <p class="grey-text text-lighten-4">Feel free to repurpose code! CSS template was Materialize!</p>
+                    <a class="btn black waves-effect waves-light" href="https://github.com/hacker719/garagepi">Project Github
+                            <i class="fab fa-github"></i>
+                    </a>
                 </div>
                 <div class="col l4 offset-l2 s12">
                     <h5 class="white-text">Contact Me</h5>
@@ -50,6 +67,7 @@
                         <li><a class="grey-text text-lighten-3" href="mailto:neel.redkar@outlook.com">Email</a></li>
                     </ul>
                 </div>
+                
             </div>
         </div>
         <div class="footer-copyright">
@@ -63,24 +81,27 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-    $("#activate").click(function(e) {
-    e.preventDefault();
-    datagar = { 
-            auth: document.getElementById("pass").value, 
-        }
-    console.log(datagar);
-    $.ajax({
-        type: "POST",
-        url: "/door",
-        data:datagar,
-        success: function(result) {
-            alert('Activated Garage');
-        },
-        error: function(result) {
-            alert('Error/Unathorized');
-        }
-    });
-});
+        $(document).ready(function () {
+            $('.fixed-action-btn').floatingActionButton();
+        })
+        $("#activate").click(function (e) {
+            e.preventDefault();
+            datagar = {
+                auth: document.getElementById("pass").value,
+            }
+            console.log(datagar);
+            $.ajax({
+                type: "POST",
+                url: "/door",
+                data: datagar,
+                success: function (result) {
+                    alert('Activated Garage');
+                },
+                error: function (result) {
+                    alert('Error/Unathorized');
+                }
+            });
+        });
     </script>
 </body>
 

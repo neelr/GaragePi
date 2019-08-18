@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>GaragePi</title>
+</head>
+
+<body>
+    <div class="container" style="  display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    ">
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Password" id="pass" type="text" class="validate">
+                <label for="first_name">Password</label>
+            </div>
+            <div class="input-field col s6">
+                <button id="activate" class="btn waves-effect waves-light" type="submit" name="action">Activate
+                    <i class="material-icons right">wb_cloudy</i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="page-footer grey darken-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">GaragePi</h5>
+                    <p class="grey-text text-lighten-4">Feel free to repurpose code! CSS template was Materialize!</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Contact Me</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="https://github.com/hacker719">Github</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://neelredkar.tech">Website</a></li>
+                        <li><a class="grey-text text-lighten-3" href="mailto:neel.redkar@outlook.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                AGPL-V3 Open Source
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+    $("#activate").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "/door",
+        data: { 
+            auth: document.getElementById("pass").value, 
+        },
+        success: function(result) {
+            alert('Activated Garage');
+        },
+        error: function(result) {
+            alert('Error/Unathorized');
+        }
+    });
+});
+    </script>
+</body>
+
+</html>

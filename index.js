@@ -1,7 +1,10 @@
 var express = require("express");
 var bodyparse = require("body-parser")
-var Gpio = require('onoff').Gpio
+var ejs = require("ejs");
+//var Gpio = require('onoff').Gpio
 var app = express();
+app.set('view engine', 'ejs');
+/*
 var door = new Gpio(4, 'out');
 // setup the stuff for gpio
 function open() {
@@ -15,10 +18,10 @@ function activate() {
 	open()
 	console.log(door.readSync());
 	setTimeout(close,5000)
-}
+}*/
 app.use(bodyparse.json());
 app.get("/",(req,res)=> {
-	res.send("Hi! This is garage pi!");
+	res.render("index");
 });
 app.post("/door",(req,res)=> {
 	if (req.body.auth == process.env.KEY) {

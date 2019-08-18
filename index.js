@@ -5,7 +5,7 @@ var Gpio = require('onoff').Gpio
 var app = express();
 app.set('view engine', 'ejs');
 app.use(bodyparse.urlencoded({ extended: true }));
-
+app.use(express.static('public'))
 var door = new Gpio(4, 'out');
 // setup the stuff for gpio
 function open() {

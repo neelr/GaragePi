@@ -4,6 +4,7 @@ var ejs = require("ejs");
 var Gpio = require('onoff').Gpio
 var app = express();
 app.set('view engine', 'ejs');
+app.use(bodyparse.urlencoded({ extended: true }));
 
 var door = new Gpio(4, 'out');
 // setup the stuff for gpio
@@ -19,11 +20,11 @@ function activate() {
 	console.log(door.readSync());
 	setTimeout(close,5000)
 }
-app.use(bodyparse.json());
 app.get("/",(req,res)=> {
 	res.render("index");
 });
 app.post("/door",(req,res)=> {
+	console.log(req.body);
 	if (req.body.auth == process.env.KEY) {
 		res.sendStatus(200)
 		activate();

@@ -60,12 +60,14 @@
     <script>
     $("#activate").click(function(e) {
     e.preventDefault();
+    datagar = { 
+            auth: document.getElementById("pass").value, 
+        }
+    console.log(datagar);
     $.ajax({
         type: "POST",
         url: "/door",
-        data: { 
-            auth: document.getElementById("pass").value, 
-        },
+        data:datagar,
         success: function(result) {
             alert('Activated Garage');
         },

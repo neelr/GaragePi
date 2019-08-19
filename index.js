@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require("express");
 var bodyparse = require("body-parser")
 var ejs = require("ejs");
@@ -8,6 +9,7 @@ app.use(bodyparse.urlencoded({ extended: true }));
 app.use(express.static('public'))
 var door = new Gpio(4, 'out');
 // setup the stuff for gpio
+door.writeSync(1)
 function open() {
 	door.writeSync(1);
 }
@@ -16,9 +18,9 @@ function close() {
 console.log(door.readSync());
 }
 function activate() {
-	open()
+	close()
 	console.log(door.readSync());
-	setTimeout(close,5000)
+	setTimeout(open,1000)
 }
 app.get("/",(req,res)=> {
 	res.render("index");
